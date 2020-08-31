@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\UserResource;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
@@ -22,6 +23,11 @@ class RegisterController extends Controller
             'password' => bcrypt($request->password),
             'api_token' => Str::random(80),
         ]);
-        return response()->json($user);
+
+        return (new UserResource($user))->additional([
+            'meta'=>[
+                'token'=> $user->api_token,
+            ],
+        ]);
     }
 }
