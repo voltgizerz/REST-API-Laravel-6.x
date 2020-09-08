@@ -15,6 +15,11 @@ class QuoteController extends Controller
 
         return QuoteResource::collection($quotes);
     }
+
+    public function show(Quote $quote){
+
+        return new QuoteResource($quote);
+    }
     public function store(Request $request){
 
         $this->validate($request,[
