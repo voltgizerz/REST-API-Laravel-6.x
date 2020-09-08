@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class QuoteController extends Controller
 {
+    public function index()
+    {
+        $quotes = Quote::latest()->paginate(10);
+
+        return QuoteResource::collection($quotes);
+    }
     public function store(Request $request){
 
         $this->validate($request,[
