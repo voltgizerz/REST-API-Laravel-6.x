@@ -29,6 +29,14 @@ class QuoteController extends Controller
         return new QuoteResource($quote);
     }
 
+    public function destroy(Quote $quote){
+        $this->authorize('delete',$quote);
+        $quote->delete();
+        return response()->json([
+            'message'=>'Quote deleted',
+        ]);
+    }
+
 
     public function store(Request $request){
 

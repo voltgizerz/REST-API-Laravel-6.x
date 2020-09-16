@@ -13,4 +13,8 @@ class QuotePolicy
     public function update(User $user,Quote $quote){
         return $user->ownsQuote($quote);
     }
+
+    public function delete(User $user,Quote $quote){
+        return $user->ownsQuote($quote);
+    }
 }
