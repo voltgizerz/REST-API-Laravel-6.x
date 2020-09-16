@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function quotes(){
         return $this->hasMany(Quote::class);
     }
+
+    public function oensQuote(Quote $quote){
+        return auth()->id()=== $quote->user->id;
+    }
 }

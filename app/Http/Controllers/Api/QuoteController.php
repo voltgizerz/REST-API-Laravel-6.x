@@ -22,7 +22,7 @@ class QuoteController extends Controller
     }
 
     public function update(Request $request,Quote $quote){
-
+        $this->authorize('update',$quote);
         $quote->update([
             'message'=>$request->message
         ]);
